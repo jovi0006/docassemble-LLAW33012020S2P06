@@ -27,7 +27,8 @@ buttons:
 ---
 # Final Screen
 mandatory: true
-question: |
+question: Final Screen
+subquestion: |
   Thank you for completing this application. Here are your responses,
   
   Questions                           |Answers
@@ -39,23 +40,54 @@ question: |
   
   Here are the list of services,
   
-  %if CLCSAgender:
-    ${CLCSA3column_header}
-    ${CLCSA3dashes}
-    %for CLCSA3item in CLCSA3table_rows:
-    ${CLCSA3item}
-    %endfor
-  %endif
-  
-  %if CLCSAindigenous:
-    ${CLCSA4column_header}
-    ${CLCSA4dashes}
-    %for CLCSA4item in CLCSA4table_rows:
-    ${CLCSA4item}
-    %endfor
-  %endif
+  ${CLCSAdisplay_gender}
+  ${CLCSAdisplay_indigenous}
     
 buttons:
   - exit: Exit
   - restart: Restart
+---
+objects:
+  - CLCSAdisplay_list: DAList.using(there_are_any=True, auto_gather=False)
+  - CLCSAdiplay_gsf: DAList.using(there_are_any=True, auto_gather=False)
+---
+code: |
+  for CLCSAa_service in CLCSAservicesGeneral:
+    if CLCSAa_service['gender_specific'] == 'Female':
+      CLCSAdiplay_gsf.append(CLCSAa_service)
+  CLCSAdiplay_gsf.gathered = True
+---
+code: |
+  for CLCSAa_location in CLCSAlocation.true_values():
+    # Find each agency that's in a_location
+    for CLCSAa_service in CLCSAservicesGeneral:
+      if CLCSAa_location is CLCSAa_service['location'] and CLCSAgender in CLCSAa_service['gender']:
+        # add this to the display list
+        CLCSAdisplay_list.append(CLCSAa_service)
+
+  CLCSAdisplay_list.gathered = True
+---
+template: CLCSAdisplay_gender
+content: |
+  %if CLCSAgender == 'Female':
+  ${CLCSA3column_header}
+  ${CLCSA3dashes}
+  %for CLCSA3item in CLCSA3table_rows:
+  ${CLCSA3item}
+  %endfor
+  %elif CLCSAgender == 'Male':
+  something
+  %elif CLCSAgender == 'Other':
+  somethere here too
+  %endif
+---
+template: CLCSAdisplay_indigenous
+content: |
+  %if CLCSAindigenous:
+  ${CLCSA4column_header}
+  ${CLCSA4dashes}
+  %for CLCSA4item in CLCSA4table_rows:
+  ${CLCSA4item}
+  %endfor
+  %endif
 ---

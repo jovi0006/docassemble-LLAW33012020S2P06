@@ -19,6 +19,11 @@ data:
     indigenous:
       - No
       - Do not wish to say
+    specialist: True
+    genderspecific: Female
+    special_key:
+      - specialist
+      - gsf
   - name: WestSide Lawyers Hindmarsh
     location:
       - West

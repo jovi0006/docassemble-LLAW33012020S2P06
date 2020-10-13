@@ -42,9 +42,9 @@ fields:
     choices:
       - "Male": Male
         image: male
-      - "Female":
+      - "Female": Female
         image: female
-      - Other
+      - Other: Other
 ---
 question: Do you identify as Aboriginal or Torrens Straight Islander?
 fields:
