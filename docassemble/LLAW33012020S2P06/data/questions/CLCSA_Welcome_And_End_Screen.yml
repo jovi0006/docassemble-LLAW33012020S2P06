@@ -25,6 +25,12 @@ buttons:
   - I agree: continue
   - I do not agree: exit
     url: https://www.clcsa.org.au/
+    
+action buttons:
+  - label: Come back later
+    action: http://www.bom.gov.au/sa/forecasts/adelaide.shtml
+    color: warning
+    icon: sign-out alt
 ---
 # Final Screen
 mandatory: true
@@ -46,6 +52,12 @@ subquestion: |
 buttons:
   - Exit: Exit
   - Restart: Restart
+  
+action buttons:
+  - label: Come back later
+    action: http://www.bom.gov.au/sa/forecasts/adelaide.shtml
+    color: warning
+    icon: sign-out alt
 ---
 objects:
   - JR_names: DADict
