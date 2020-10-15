@@ -44,8 +44,8 @@ subquestion: |
   ${CLCSAdisplay_list}
 
 buttons:
-  - Exit: Exit
-  - Restart: Restart
+  - Exit: exit
+  - Restart: restart
 ---
 objects:
   - JR_names: DADict
