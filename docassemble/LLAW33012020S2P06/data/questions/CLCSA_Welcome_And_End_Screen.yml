@@ -11,6 +11,9 @@ mandatory: True
 code: |
   set_parts(logo='<img src="' + CLCSAlogo.url_for() + '" style="height: 50px;">')
 ---
+features:
+  css: welcome.css
+---
 # Welcome screen
 mandatory: true
 question: |
