@@ -5,9 +5,20 @@ include:
   - CLCSA_List_of_Services_Code.yml
   - CLCSA_CSS_Code.yml
 ---
+objects:
+  - CLCSAlogo: DAStaticFile.using(filename='CLCSAlogo.jpg')
+---
+mandatory: True
+code: |
+  set_parts(logo='<img src="' + CLCSAlogo.url_for() + '" style="height: 50px;">')
+---
+features:
+  css: DAStaticFile.using(filename='welcome.css')
+---
 # Welcome screen
 mandatory: true
 question: |
+  
   ## Welcome to the Community Legal Centre South Australia application. This application will help find a legal centre for you.
   
 
