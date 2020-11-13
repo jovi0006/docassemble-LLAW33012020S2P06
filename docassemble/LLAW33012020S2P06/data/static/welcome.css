@@ -1,0 +1,24 @@
+.row {
+  color: #2c548f;
+  font-family: Times New Roman
+}
+
+.da-subquestion{
+  font-size: 20px;
+}
+
+.daMainQuestion{
+  font-weight: 1100;
+}
+
+.btn-light{
+  color: #2f8291;
+}
+
+h2{
+  color:black;
+}
+
+h3 {
+  text-decoration: underline;
+}
